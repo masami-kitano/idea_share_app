@@ -1,0 +1,72 @@
+<div class="item comment-btn">
+    <form>
+        <button type="button" style="border-style: none;">
+            <i class="far fa-comment"></i>
+        </button>
+    </form>
+    <p class="post-comment-count"><%= idea.comments.count %></p>
+</div>
+<div class="window comment-modal">
+    <div class="window__content comment-modal__content">
+        <div class="idea-title">
+            <%= idea.title %>
+        </div>
+        <div class="idea-category">
+            カテゴリー：<%= idea.category.name %>
+        </div>
+        <div class="idea-content">
+            <div class="label">内容</div>
+            <div class="content"><%= idea.content %></div>
+        </div>
+        <div class="comment-form">
+            <%= form_with(model: @comment, local: true) do |f| %>
+                <div class="idea-form-wrap">
+                    <div class="label">コメント</div>
+                    <%= f.text_area :content, class: 'comment-area', placeholder: 'コメントを入力' %>
+                    <%= f.hidden_field :post_id, value: idea.id %>
+                </div>
+            	<%= f.submit '保存', class: '' %>
+            <% end %>
+        </div>
+        <div class="idea-comments">
+            <div class="label">コメントログ</div>
+            <% idea.comments.each do |comment| %>
+                <% if comment.user_id == current_user.id %>
+                <div class="comment-wrap current-user-comment-wrap">
+                <% else %>
+                <div class="comment-wrap">
+                <% end %>
+                    <div class="comment">
+                        <%= comment.content %>
+                    </div>
+                    <% if comment.user_id == current_user.id %>
+                        <div class="item comment-update-btn">
+                            <i class="fas fa-pen"></i>
+                        </div>
+                        <div class="item">
+                        <%= link_to comment, data: { confirm: "本当に削除してもよろしいですか?" }, class: 'delete-btn', :method => :delete do %>
+                           <i class="far fa-trash-alt"></i>
+                        <% end %>
+                        </div>
+                    <% end %>
+                </div>
+                <% if comment.user_id == current_user.id %>
+                <div class="comment-update-wrap current-user-comment-update-wrap">
+                    <%= form_with(model: comment, local: true) do |f| %>
+                    	<%= f.text_area :content, class: 'form-item content' %>
+                    	<%= f.submit '保存', class: '' %>
+                    <% end %>
+                    <div class="comment-update-close-btn">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <% end %>
+            <% end %>
+        </div>
+        <div class="close-btn">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>

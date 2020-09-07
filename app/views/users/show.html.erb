@@ -1,2 +1,41 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="user-detail">
+  <div class="user">
+    <div class="user__img">
+      <% if @user.image? %>                                                              
+        <%= image_tag @user.image.thumb50.url %>
+      <% else %>
+        <%= image_tag 'default_user.png', class: "default-img" %>
+      <% end %>
+    </div>
+    <h3 class="user__name"><%= @user.name %></h3>
+    <div class="user__idea-count">投稿数：<%= @count_posts %></div>
+  </div>
+  <div class="user-idea-wrap">
+    <div class="folder-flex">
+      <% @posts.each do |idea| %>
+          <div class="folder-item">
+              <div class="folder-item__wrap">
+                  <div class="folder-item__title">
+                      <p><%= idea.title %></p>
+                  </div>
+                  <div class="folder-item__content">
+                      <p><%= idea.content %></p>
+                  </div>
+                  <div class="folder-item__menu">
+                      <%= render 'favorites/like_button', idea: idea %>
+                      <%= render 'comments/comment', idea: idea, current_user: current_user %>
+                      <%= render 'posts/post_modify', idea: idea %>
+                  </div>
+                  <div class="folder-item__create-user">
+                      <% if idea.user.image? %>                                                              
+                          <%= image_tag idea.user.image.thumb.url %>
+                      <% else %>
+                          <%= image_tag "default_user.png", class: "default-img" %>
+                      <% end %>
+                  </div>
+              </div>
+          </div>
+      <% end %>
+  </div>
+  </div>
+</div>

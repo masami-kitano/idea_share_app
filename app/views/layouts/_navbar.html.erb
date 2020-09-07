@@ -1,0 +1,16 @@
+<header>
+  <nav class="aedi-nav">
+    <div class="logo-area">
+      <%= link_to image_tag 'aedi_logo.png', root_path, class: '', data: {"turbolinks"=>false} %>
+    </div>
+    <ul class="nav-menu">
+      <% if logged_in? %>
+        <li class="nav-menu__item profile"><%= link_to 'プロフィール', user_path(current_user) %></li>
+        <li class="nav-menu__item logout"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+      <% else %>
+        <li class="nav-menu__item account"><%= link_to 'アカウントを作成', signup_path, class: '' %></li>
+        <li class="nav-menu__item login"><%= link_to 'ログイン', login_path, class: '' %></li>
+      <% end %>
+    </ul>
+  </nav>
+</header>

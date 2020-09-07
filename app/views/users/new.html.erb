@@ -1,2 +1,35 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="signup-area">
+  <div class="form-area">
+    <h2>アカウントを作成</h2>
+    <%= form_with(model: @user, local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      
+      <div class="form-area__item">
+        <p class="label"><%= f.label :name, 'ユーザー名' %></p>
+        <%= f.text_field :name %>
+      </div>
+
+      <div class="form-area__item">
+        <p class="label"><%= f.label :email, 'メールアドレス' %></p>
+        <%= f.email_field :email %>
+      </div>
+
+      <div class="form-area__item">
+        <p class="label"><%= f.label :password, 'パスワード' %></p>
+        <%= f.password_field :password %>
+      </div>
+
+      <div class="form-area__item">
+        <p class="label"><%= f.label :password_confirmation, 'パスワード（再確認）' %></p>
+        <%= f.password_field :password_confirmation %>
+      </div>
+      
+      <div class="form-area__item">
+        <p class="label"><%= f.label :image, '画像' %></p>
+        <%= f.file_field :image %>
+      </div>
+
+      <%= f.submit '登録する'%>
+    <% end %>
+  </div>
+</div>

@@ -1,2 +1,21 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<div class="login-area">
+  <div class="form-area">
+    <h2>ログイン</h2>
+    <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+
+      <div class="form-area__item">
+        <p class="label"><%= f.label :email, 'メールアドレス' %></p>
+        <%= f.email_field :email %>
+      </div>
+
+      <div class="form-area__item">
+        <p class="label"><%= f.label :password, 'パスワード' %></p>
+        <%= f.password_field :password %>
+      </div>
+
+      <%= f.submit 'ログイン' %>
+    <% end %>
+
+    <p class="signup-link">新規登録は<%= link_to 'こちら', signup_path %></p>
+  </div>
+</div>

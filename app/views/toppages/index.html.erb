@@ -1,2 +1,65 @@
-<h1>Toppages#index</h1>
-<p>Find me in app/views/toppages/index.html.erb</p>
+<% if logged_in? %>
+    <section class="main">
+        <div class="main-menu">
+            <%= render 'categories/category'%>
+        </div>
+        <div class="main-content">
+            <%= render 'users/users_top'%>
+            <div class="folder">
+                <%= render 'categories/category_tab'%>
+                <div class="folder-content">
+                    <%= render 'posts/post_create'%>
+                    <div class="folder-content__container">
+                        <% @categories.each do |category| %>
+                            <div class="folder-content__wrap">
+                                <div class="folder-flex">
+                                    <% category.posts.where(user_id: current_user.following_ids + [current_user.id]).order(id: :desc).each do |idea| %>
+                                        <div class="folder-item">
+                                            <div class="folder-item__wrap">
+                                                <div class="folder-item__title">
+                                                    <p><%= idea.title %></p>
+                                                </div>
+                                                <div class="folder-item__content">
+                                                    <p><%= idea.content %></p>
+                                                </div>
+                                                <div class="folder-item__menu">
+                                                    <%= render 'favorites/like_button', idea: idea %>
+                                                    <%= render 'comments/comment', idea: idea, current_user: current_user %>
+                                                    <%= render 'posts/post_modify', idea: idea %>
+                                                </div>
+                                                <div class="folder-item__create-user">
+                                                    <% if idea.user.image? %>                                                              
+                                                        <%= image_tag idea.user.image.thumb.url %>
+                                                    <% else %>
+                                                        <%= image_tag "default_user.png", class: "default-img" %>
+                                                    <% end %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<% else %>
+    <div class="main-top">
+        <div class="main-top__img">
+            <%= image_tag 'top-main.jpg', class: "top-main-img" %>
+            <!--<a href='https://jp.freepik.com/vectors/people'>Pch.vector - jp.freepik.com によって作成された people ベクトル</a>-->
+        </div>
+        <div class="main-top__txt">
+            <p>Aedi(エーディ）を使えば、チームのアイデアを一つにまとめ、共有することができます。<br>
+            日々頭の中に浮かんでいるアイデアをチームで共有することでそのそのアイデアが大きな成果をもたらすかもしれません。
+            誰かが共有したアイデアにコメントし、フィードバックすることも簡単です。<br>
+            さあ、アイデアをシェアしましょう。
+            </p>
+        </div>
+    </div>
+    <div class="start-link">
+        <%= link_to 'Aediを使ってみる！', signup_path %>
+    </div>
+<% end %>
