@@ -79,6 +79,15 @@
     		$('.item.comment-btn').removeClass('active');
     		$(this).addClass('active');
         });
+
+        $('.folder-item__content').click(function() {
+            var index = $('.folder-item__content').index(this);
+    		$('.comment-modal').css('display','none');
+    		$('.comment-modal').eq(index).css('display','block');
+    		$('.folder-item__content').removeClass('active');
+    		$(this).addClass('active');
+        });
+
         
         $('.close-btn').click(function() {
             $('.comment-modal').css('display', 'none');
@@ -118,6 +127,12 @@
     $(window).on('load',function(){
         $('#category:first-child').addClass('is-active');
         $('.folder-content__wrap:first-child').addClass('is-show');
+    });
+
+    $(function($){
+    	$('.alert').click(function(){
+            $('.alert').fadeOut();
+        });
     });
     
 })(jQuery);
