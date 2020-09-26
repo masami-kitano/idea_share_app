@@ -38,6 +38,57 @@
             $('.folder-content__wrap').eq(index).addClass('is-show');
         });
     });
+
+    // プロフィールメニュー表示
+    $(function($){
+        $('.nav-menu .user__icon').click(function() {
+            $('.nav-menu__wrap').css('display', 'block');
+        });
+        
+        $('.nav-menu__wrap .close-btn').click(function() {
+            $('.nav-menu__wrap').css('display', 'none');
+        });
+    });
+
+    // プロフィール内容変更
+    $(function($){
+        $('.name-modify-btn').click(function() {
+            var index = $('.name-modify-btn').index(this);
+            $('.user__name .name').eq(index).css('display', 'none');
+            $('.user-name-modify').eq(index).css('display', 'block');
+        });
+        
+        $('.user-modify-close-btn').click(function() {
+            var index = $('.user-modify-close-btn').index(this);
+            $('.user-name-modify').eq(index).css('display', 'none');
+            $('.user__name .name').eq(index).css('display', 'block');
+        });
+    });
+
+    // プロフィール画像のモーダルデザイン
+    $(function(){
+        $("input[type='file']").on('change',function(){
+           var file = $(this).prop('files')[0];
+           if(!($(".filename").length)){
+             $(".form-area__item").append('<span class="filename"></span>');
+           }
+           $("#input-label").addClass('changed');
+           $(".filename").html(file.name);
+        });
+    });
+
+    // プロフィールモーダル
+    $(function($){
+        $('.img-modify-btn').click(function() {
+            $('.img-modify-modal').css('display', 'block');
+            $('.name-modify-btn').css('display', 'none');
+        });
+        
+        $('.user-img-close-btn').click(function() {
+            $('.img-modify-modal').css('display', 'none');
+            $('.name-modify-btn').css('display', 'inline');
+        });
+    });
     
     // カテゴリー作成
     $(function($){

@@ -28,13 +28,20 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
+    current_user.update(user_params)
+    flash[:success] = 'プロフィールを更新しました'
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
+    if current_user.destroy
+      flash[:success] = '退会しました。'
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:danger] = '退会できません。'
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def followings
