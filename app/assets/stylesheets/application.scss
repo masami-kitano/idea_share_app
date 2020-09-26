@@ -233,30 +233,83 @@
      
      &__modal {
          &__content {
-             &.delete {
-                 overflow-y: auto;
+            &.delete {
+                overflow-y: auto;
                  
-                 p.delete-cat {
-                     margin-bottom: 15px;
-                     background: #dfe1e8;
-                     border-radius: 3px;
-                     padding: 8px 12px;
-                     min-height: 40px;
-                     font-size: 14px;
-                     
-                     span.delete-btn {
-                         cursor: pointer;
-                         position: absolute;
-                         right: 21px;
-                         color: #b1aeae;
-                         font-size: 12px;
-                         color: #5e6268;
-                         
-                         &:hover {
-                             color: #000;
-                         }
-                     }
-                 }
+                p.delete-cat {
+                    margin-bottom: 15px;
+                    background: #dfe1e8;
+                    border-radius: 3px;
+                    padding: 8px 12px;
+                    min-height: 40px;
+                    font-size: 14px;
+                    
+                    span.delete-btn {
+                        cursor: pointer;
+                        position: absolute;
+                        right: 21px;
+                        color: #b1aeae;
+                        font-size: 12px;
+                        color: #5e6268;
+                        
+                        &:hover {
+                            color: #000;
+                        }
+                    }
+
+                    span.modify-btn {
+                        cursor: pointer;
+                        position: absolute;
+                        right: 45px;
+                        color: #b1aeae;
+                        font-size: 12px;
+                        color: #5e6268;
+                        
+                        &:hover {
+                            color: #000;
+                        }
+                    }
+                }
+
+                .cat-modify {
+                    display: none;
+                    position: relative;
+
+                    input[type=submit] {
+                        margin-bottom: 8px;
+                    }
+                }
+
+                .cat-modify-close-btn {
+                    cursor: pointer;
+                    position: absolute;
+                    right: 10px;
+                    top: 6px;
+                    border-radius: 50%;
+                    width: 30px;
+                    height: 30px;
+                    
+                    &:hover {
+                        background-color: rgba(#eee, 0.8);
+                    }
+                    
+                    span {
+                        position: absolute;
+                        top: 48%;
+                        left: 25%;
+                        width: 15px;
+                        height: 1px;
+                        background-color: #555;
+                        
+                        &:first-child {
+                            transform: rotate(45deg);
+                        }
+                        
+                        &:nth-child(2) {
+                            transform: rotate(-45deg);
+                        }
+                    }
+                }
              }
              
              .cat-form-content {
@@ -641,36 +694,36 @@
                          margin-bottom: 10px;
                      }
                      
-                     .comment-update-close-btn {
-                         cursor: pointer;
-                         position: absolute;
-                         right: 10px;
-                         top: 6px;
-                         border-radius: 50%;
-                         width: 30px;
-                         height: 30px;
-                         
-                         &:hover {
-                             background-color: rgba(#eee, 0.8);
-                         }
-                         
-                         span {
-                             position: absolute;
-                             top: 48%;
-                             left: 25%;
-                             width: 15px;
-                             height: 1px;
-                             background-color: #555;
-                             
-                             &:first-child {
-                                 transform: rotate(45deg);
-                             }
-                             
-                             &:nth-child(2) {
-                                 transform: rotate(-45deg);
-                             }
-                         }
-                     }
+                    .comment-update-close-btn {
+                        cursor: pointer;
+                        position: absolute;
+                        right: 10px;
+                        top: 6px;
+                        border-radius: 50%;
+                        width: 30px;
+                        height: 30px;
+                        
+                        &:hover {
+                            background-color: rgba(#eee, 0.8);
+                        }
+                        
+                        span {
+                            position: absolute;
+                            top: 48%;
+                            left: 25%;
+                            width: 15px;
+                            height: 1px;
+                            background-color: #555;
+                            
+                            &:first-child {
+                                transform: rotate(45deg);
+                            }
+                            
+                            &:nth-child(2) {
+                                transform: rotate(-45deg);
+                            }
+                        }
+                    }
                  }
                  
                  .comment-wrap {

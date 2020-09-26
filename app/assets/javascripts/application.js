@@ -39,6 +39,7 @@
         });
     });
     
+    // カテゴリー作成
     $(function($){
         $('.cat-create-btn').click(function() {
             $('.cat-create-modal').css('display', 'block');
@@ -48,7 +49,23 @@
             $('.cat-create-modal').css('display', 'none');
         });
     });
+
+    // カテゴリー編集
+    $(function($){
+        $('.modify-btn').click(function() {
+            var index = $('.modify-btn').index(this);
+            $('.delete-cat').eq(index).css('display', 'none');
+            $('.cat-modify').eq(index).css('display', 'block');
+        });
+        
+        $('.cat-modify-close-btn').click(function() {
+            var index = $('.cat-modify-close-btn').index(this);
+            $('.cat-modify').eq(index).css('display', 'none');
+            $('.delete-cat').eq(index).css('display', 'block');
+        });
+    });
     
+    // カテゴリー削除
     $(function($){
         $('.cat-delete-btn').click(function() {
             $('.cat-delete-modal').css('display', 'block');
@@ -94,6 +111,7 @@
         });
     });
     
+    // コメント編集
     $(function($){
         $('.comment-update-btn').click(function() {
             var index = $('.comment-update-btn').index(this);
@@ -107,6 +125,8 @@
             $('.current-user-comment-wrap').eq(index).css('display', 'block');
         });
     });
+
+
     
     // 編集モーダル出しわけ
     $(function($){
