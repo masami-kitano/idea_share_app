@@ -95,6 +95,10 @@
         $('.cat-create-btn').click(function() {
             $('.cat-create-modal').css('display', 'block');
         });
+
+        $('.create-item.cat-create').click(function() {
+            $('.cat-create-modal').css('display', 'block');
+        });
         
         $('.close-btn').click(function() {
             $('.cat-create-modal').css('display', 'none');
@@ -121,20 +125,36 @@
         $('.cat-delete-btn').click(function() {
             $('.cat-delete-modal').css('display', 'block');
         });
+
+        $('.create-item.cat-modify').click(function() {
+            $('.cat-delete-modal').css('display', 'block');
+        });
         
         $('.close-btn').click(function() {
             $('.cat-delete-modal').css('display', 'none');
         });
     });
     
-    
+    // アイデア追加
     $(function($){
         $('.add-idea__btn').click(function() {
+            $('.add-idea__form').css('display', 'block');
+        });
+
+        $('.create-item.idea-create').click(function() {
             $('.add-idea__form').css('display', 'block');
         });
         
         $('.close-btn').click(function() {
             $('.add-idea__form').css('display', 'none');
+        });
+    });
+
+    // SP アイデア追加ボタン
+    $(function($){
+        $('.sp-idea-create-btn').on('click', function() {
+            $('.sp-idea-create-btn').toggleClass('close-button');
+            $('.sp-idea-create-wrap').toggleClass('show');
         });
     });
     

@@ -246,6 +246,83 @@
      display: flex;
      background: #fafafa;
  }
+
+ .sp-idea-create-btn {
+     display: none;
+
+     @include tab {
+        z-index: 95;
+        position: fixed;
+        left: 15px;
+        bottom: 15px;
+        display: block;
+        background: #fff;
+        box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+
+        span {
+            position: absolute;
+            top: 18px;
+            left: 10px;
+            width: 20px;
+            height: 2px;
+            background: #999b9e;
+            border-radius: 3px;
+            transition: all .6s;
+
+            &:first-child {
+                transform: rotate(0deg)
+            }
+
+            &:nth-child(2) {
+                transform: rotate(90deg)
+            }
+        }
+
+        &.close-button {
+            span {
+                &:first-child {
+                    transform: rotate(-45deg)
+                }
+    
+                &:nth-child(2) {
+                    transform: rotate(45deg)
+                }
+            }
+        }
+     }
+ }
+
+ .sp-idea-create-wrap {
+    display: none;
+
+    @include tab {
+        z-index: 95;
+        position: fixed;
+        bottom: 60px;
+        left: 18px;
+        display: none;
+        transition: all .6s;
+
+        &.show {
+            bottom: 80px;
+            display: block;
+        }
+
+        .create-item {
+            margin-top: 15px;
+            background: #fff;
+            color: #999b9e;
+            text-align: center;
+            font-size: 19px;
+            box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08);
+            border-radius: 50%;
+            padding: 2px 7px;
+        }
+    }
+ }
  
  .main-top {
      display: flex;
@@ -325,22 +402,26 @@
      margin-top: 24px;
      width: 80px;
      
-     @include sp {
-         display: none;
+     @include tab {
+        width: 0;
      }
  
      .fas, .far {
-         color: #5F636B;
+        color: #5F636B;
      }
  
      &__btn {
-         cursor: pointer;
-         margin: 0 auto;
-         width: 48px;
-         height: 48px;
-         text-align: center;
-         line-height: 48px;
-         color: #5e6268;
+        cursor: pointer;
+        margin: 0 auto;
+        width: 48px;
+        height: 48px;
+        text-align: center;
+        line-height: 48px;
+        color: #5e6268;
+
+        @include tab {
+            display: none;
+        }
      }
      
      @include window-content;
@@ -437,7 +518,7 @@
  .main-content {
      width: calc(100% - 80px);
      
-     @include sp {
+     @include tab {
          width: 100%;
      }
  }
