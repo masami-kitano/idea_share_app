@@ -660,6 +660,10 @@
  
  .add-idea {
      padding-top: 30px;
+
+     @include tab {
+        padding-top: 0;
+     }
  
      &__btn {
          cursor: pointer;
