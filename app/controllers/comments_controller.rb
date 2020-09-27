@@ -12,8 +12,8 @@ class CommentsController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
       @comments = current_user.comments.order(id: :desc)
-      flash.now[:danger] = 'コメントを追加できませんでした。'
-      render 'toppages/index'
+      flash[:danger] = 'コメントを追加できませんでした。'
+      redirect_back(fallback_location: root_path)
     end
   end
 

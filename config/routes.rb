@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :categories
+  resources :categories, only: [:create, :update, :destroy] 
   resources :posts, only: [:create, :update, :destroy] 
   resources :comments, only: [:create, :update, :destroy]
   resources :relationships, only: [:create, :destroy]
