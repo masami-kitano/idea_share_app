@@ -673,9 +673,8 @@
          color: #fff;
          text-align: center;
          
-         @include sp {
-             width: 80%;
-             font-size: 13px;
+         @include tab {
+            display: none;
          }
          
          &:hover {
