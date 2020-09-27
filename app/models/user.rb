@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_secure_password
   mount_uploader :image, ImageUploader
   
-  has_many :categories, dependent: :destroy
+  has_many :categories, dependent: :nullify
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :relationships, dependent: :destroy

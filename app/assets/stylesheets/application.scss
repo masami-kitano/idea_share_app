@@ -867,7 +867,11 @@
                  }
                  
                  .item {
-                     display: inline-block;
+                    display: inline-block;
+
+                    &.comment-update-btn {
+                        margin-left: 55px;
+                    }
                  }
              }
              
@@ -967,6 +971,7 @@
                 }
 
                 label {
+                    cursor: pointer;
                     background: #ddd;
                     padding: 6px 12px;
                     border-radius: 3px;

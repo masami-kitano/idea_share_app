@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @categories = Category.all
     @user = User.find(params[:id])
     @posts = @user.posts.order(id: :desc).page(params[:page])
+    @comment = current_user.comments.build
     counts(@user)
   end
 

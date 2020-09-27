@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     if @comment.save
       flash[:success] = 'コメントを追加しました。'
-      redirect_to root_url
+      redirect_back(fallback_location: root_path)
     else
       @comments = current_user.comments.order(id: :desc)
       flash.now[:danger] = 'コメントを追加できませんでした。'
