@@ -9,18 +9,18 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = 'アイデアを投稿しました'
-      redirect_to root_url
+      redirect_back(fallback_location: root_path)
     else
       @posts = current_user.feed_posts.order(id: :desc)
-      flash.now[:danger] = 'アイデアの投稿に失敗しました。'
-      render 'toppages/index'
+      flash[:danger] = 'アイデアの投稿に失敗しました。'
+      redirect_back(fallback_location: root_path)
     end
   end
   
   def update
     @post.update(post_params)
     flash[:success] = 'アイデアを更新しました'
-    redirect_to root_url
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy

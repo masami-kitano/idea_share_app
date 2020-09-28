@@ -1,5 +1,5 @@
-<p class="cat-create-btn main-menu__btn"><i class="fas fa-pen"></i></p>
-<p class="cat-delete-btn main-menu__btn"><i class="far fa-trash-alt"></i></p>
+<p class="cat-create-btn main-menu__btn"><i class="far fa-folder"></i></p>
+<p class="cat-delete-btn main-menu__btn"><i class="fas fa-pen"></i></p>
 <div class="window cat-create-modal main-menu__modal">
     <div class="window__content main-menu__modal__content create">
         <%= form_with(model: @category, local: true) do |f| %>
@@ -15,16 +15,29 @@
 </div>
 <div class="window cat-delete-modal main-menu__modal">
     <div class="window__content main-menu__modal__content delete">
-        <p class="window__content__title">カテゴリーの削除</p>
+        <p class="window__content__title">カテゴリーの編集</p>
         <% @categories.each do |category| %>
             <p class="delete-cat">
                 <%= category.name %>
+                <span class="modify-btn">
+                    <i class="fas fa-pen"></i>
+                </span>
                 <span class="delete-btn">
                     <%= link_to category, data: { confirm: "本当に削除してもよろしいですか?" }, class: 'delete-btn', :method => :delete do %>
                         <i class="far fa-trash-alt"></i>
                     <% end %>
                 </span>
             </p>
+            <div class="cat-modify">
+                <%= form_with(model: category, local: true) do |f| %>
+                    <%= f.text_field :name, class: 'form-item content' %>
+                    <%= f.submit '保存', class: '' %>
+                <% end %>
+                <div class="cat-modify-close-btn">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
         <% end %>
         <div class="close-btn">
             <span></span>

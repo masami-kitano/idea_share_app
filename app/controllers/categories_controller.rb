@@ -15,6 +15,12 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def update
+    @category.update(category_params)
+    flash[:success] = 'カテゴリーを更新しました。'
+    redirect_back(fallback_location: root_path)
+  end
+
   def destroy
     @category = Category.find(params[:id])
     if @category.destroy

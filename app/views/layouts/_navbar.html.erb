@@ -1,16 +1,44 @@
 <header>
   <nav class="aedi-nav">
     <div class="logo-area">
-      <%= link_to image_tag('aedi_logo.png'), root_path, class: '', data: {"turbolinks"=>false} %>
+      <%= link_to image_tag('aedi.png'), root_path, class: '', data: {"turbolinks"=>false} %>
     </div>
-    <ul class="nav-menu">
+    <div class="nav-menu">
       <% if logged_in? %>
-        <li class="nav-menu__item profile"><%= link_to 'プロフィール', user_path(current_user) %></li>
-        <li class="nav-menu__item logout"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+        <div class="user__icon">
+            <% if current_user.image? %>                                                              
+                <%= image_tag current_user.image.thumb.url %>
+            <% else %>
+                <%= image_tag "default_user.png", class: "default-img" %>
+            <% end %>
+        </div>
+        <div class="nav-menu__wrap">
+          <div class="nav-menu__wrap__title">アカウント</div>
+          <div class="nav-menu__wrap__user-info">
+              <div class="icon">
+                <% if current_user.image? %>                                                              
+                  <%= image_tag current_user.image.thumb.url %>
+                <% else %>
+                  <%= image_tag "default_user.png", class: "default-img" %>
+                <% end %>
+              </div>
+              <div class="info">
+                <div class="name"><%= current_user.name %></div>
+                <div class="mail"><%= current_user.email %></div>
+              </div>
+          </div>
+          <div class="nav-menu__wrap__item profile"><%= link_to 'プロフィール', user_path(current_user), data: {"turbolinks" => false} %></div>
+          <div class="nav-menu__wrap__item logout"><%= link_to 'ログアウト', logout_path, method: :delete, data: { confirm: '本当にログアウトしますか?' } %></div>
+          <div class="nav-menu__wrap__item userout"><%= link_to '退会する', current_user, method: :delete, data: { confirm: '本当に退会しますか？' } %></div>
+          <div class="close-btn">
+            <span></span>
+            <span></span>
+          </div>
+        </div>
       <% else %>
-        <li class="nav-menu__item account"><%= link_to 'アカウントを作成', signup_path, class: '' %></li>
-        <li class="nav-menu__item login"><%= link_to 'ログイン', login_path, class: '' %></li>
+        <div class="nav-menu__item account"><%= link_to 'アカウントを作成', signup_path %></div>
+        <div class="nav-menu__item login"><%= link_to 'ログイン', login_path %></div>
       <% end %>
-    </ul>
+    </div>
   </nav>
 </header>

@@ -2,12 +2,43 @@
   <div class="user">
     <div class="user__img">
       <% if @user.image? %>                                                              
-        <%= image_tag @user.image.thumb50.url %>
+        <%= image_tag @user.image.url %>
       <% else %>
         <%= image_tag 'default_user.png', class: "default-img" %>
       <% end %>
+      <div class="img-modify-btn">変更する</div>
+      <div class="img-modify-modal">
+        <%= form_with(model: current_user, local: true) do |f| %>
+          <div class="form-area__item">
+            <%= f.label :image, '写真をアップロード', id: 'input-label' %>
+            <%= f.file_field :image %>
+          </div>
+          <%= f.submit '保存' %>
+        <% end %>
+        <div class="user-img-close-btn">
+            <span></span>
+            <span></span>
+        </div>
+      </div>
     </div>
-    <h3 class="user__name"><%= @user.name %></h3>
+    <h3 class="user__name">
+      <div class="name">
+        <%= @user.name %>
+        <span class="name-modify-btn">
+          <i class="fas fa-pen"></i>
+        </span>
+      </div>
+      <div class="user-name-modify">
+          <%= form_with(model: current_user, local: true) do |f| %>
+              <%= f.text_field :name, class: 'form-item content' %>
+              <%= f.submit '保存' %>
+          <% end %>
+          <div class="user-modify-close-btn">
+              <span></span>
+              <span></span>
+          </div>
+      </div>
+    </h3>
     <div class="user__idea-count">投稿数：<%= @count_posts %></div>
   </div>
   <div class="user-idea-wrap">

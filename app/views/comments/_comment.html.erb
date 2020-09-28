@@ -36,8 +36,15 @@
                 <% else %>
                 <div class="comment-wrap">
                 <% end %>
-                    <div class="comment">
-                        <%= comment.content %>
+                    <div class="comment-common-area">
+                        <div class="s-icon-img">
+                            <% if comment.user.image? %>                                                              
+                                <%= image_tag comment.user.image.thumb.url %>
+                            <% else %>
+                                <%= image_tag "default_user.png", class: "default-img" %>
+                            <% end %>
+                        </div>
+                        <div class="comment"><%= comment.content %></div>
                     </div>
                     <% if comment.user_id == current_user.id %>
                         <div class="item comment-update-btn">

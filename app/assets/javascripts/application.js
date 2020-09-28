@@ -38,9 +38,65 @@
             $('.folder-content__wrap').eq(index).addClass('is-show');
         });
     });
+
+    // プロフィールメニュー表示
+    $(function($){
+        $('.nav-menu .user__icon').click(function() {
+            $('.nav-menu__wrap').css('display', 'block');
+        });
+        
+        $('.nav-menu__wrap .close-btn').click(function() {
+            $('.nav-menu__wrap').css('display', 'none');
+        });
+    });
+
+    // プロフィール内容変更
+    $(function($){
+        $('.name-modify-btn').click(function() {
+            var index = $('.name-modify-btn').index(this);
+            $('.user__name .name').eq(index).css('display', 'none');
+            $('.user-name-modify').eq(index).css('display', 'block');
+        });
+        
+        $('.user-modify-close-btn').click(function() {
+            var index = $('.user-modify-close-btn').index(this);
+            $('.user-name-modify').eq(index).css('display', 'none');
+            $('.user__name .name').eq(index).css('display', 'block');
+        });
+    });
+
+    // プロフィール画像のモーダルデザイン
+    $(function(){
+        $("input[type='file']").on('change',function(){
+           var file = $(this).prop('files')[0];
+           if(!($(".filename").length)){
+             $(".form-area__item").append('<span class="filename"></span>');
+           }
+           $("#input-label").addClass('changed');
+           $(".filename").html(file.name);
+        });
+    });
+
+    // プロフィールモーダル
+    $(function($){
+        $('.img-modify-btn').click(function() {
+            $('.img-modify-modal').css('display', 'block');
+            $('.name-modify-btn').css('display', 'none');
+        });
+        
+        $('.user-img-close-btn').click(function() {
+            $('.img-modify-modal').css('display', 'none');
+            $('.name-modify-btn').css('display', 'inline');
+        });
+    });
     
+    // カテゴリー作成
     $(function($){
         $('.cat-create-btn').click(function() {
+            $('.cat-create-modal').css('display', 'block');
+        });
+
+        $('.create-item.cat-create').click(function() {
             $('.cat-create-modal').css('display', 'block');
         });
         
@@ -48,9 +104,29 @@
             $('.cat-create-modal').css('display', 'none');
         });
     });
+
+    // カテゴリー編集
+    $(function($){
+        $('.modify-btn').click(function() {
+            var index = $('.modify-btn').index(this);
+            $('.delete-cat').eq(index).css('display', 'none');
+            $('.cat-modify').eq(index).css('display', 'block');
+        });
+        
+        $('.cat-modify-close-btn').click(function() {
+            var index = $('.cat-modify-close-btn').index(this);
+            $('.cat-modify').eq(index).css('display', 'none');
+            $('.delete-cat').eq(index).css('display', 'block');
+        });
+    });
     
+    // カテゴリー削除
     $(function($){
         $('.cat-delete-btn').click(function() {
+            $('.cat-delete-modal').css('display', 'block');
+        });
+
+        $('.create-item.cat-modify').click(function() {
             $('.cat-delete-modal').css('display', 'block');
         });
         
@@ -59,14 +135,26 @@
         });
     });
     
-    
+    // アイデア追加
     $(function($){
         $('.add-idea__btn').click(function() {
+            $('.add-idea__form').css('display', 'block');
+        });
+
+        $('.create-item.idea-create').click(function() {
             $('.add-idea__form').css('display', 'block');
         });
         
         $('.close-btn').click(function() {
             $('.add-idea__form').css('display', 'none');
+        });
+    });
+
+    // SP アイデア追加ボタン
+    $(function($){
+        $('.sp-idea-create-btn').on('click', function() {
+            $('.sp-idea-create-btn').toggleClass('close-button');
+            $('.sp-idea-create-wrap').toggleClass('show');
         });
     });
     
@@ -79,12 +167,22 @@
     		$('.item.comment-btn').removeClass('active');
     		$(this).addClass('active');
         });
+
+        $('.folder-item__content').click(function() {
+            var index = $('.folder-item__content').index(this);
+    		$('.comment-modal').css('display','none');
+    		$('.comment-modal').eq(index).css('display','block');
+    		$('.folder-item__content').removeClass('active');
+    		$(this).addClass('active');
+        });
+
         
         $('.close-btn').click(function() {
             $('.comment-modal').css('display', 'none');
         });
     });
     
+    // コメント編集
     $(function($){
         $('.comment-update-btn').click(function() {
             var index = $('.comment-update-btn').index(this);
@@ -98,6 +196,8 @@
             $('.current-user-comment-wrap').eq(index).css('display', 'block');
         });
     });
+
+
     
     // 編集モーダル出しわけ
     $(function($){
@@ -118,6 +218,12 @@
     $(window).on('load',function(){
         $('#category:first-child').addClass('is-active');
         $('.folder-content__wrap:first-child').addClass('is-show');
+    });
+
+    $(function($){
+    	$('.alert').click(function(){
+            $('.alert').fadeOut();
+        });
     });
     
 })(jQuery);
