@@ -30,6 +30,7 @@
      position: fixed;
      bottom: 30px;
      right: 30px;
+     z-index: 100;
  }
  
  header {
@@ -127,6 +128,10 @@
      
      &__img {
          width: 50%;
+
+	 @include tab {
+	   width: 100%;
+	 }
          
          img {
              width: 100%;
@@ -139,6 +144,12 @@
          padding: 0 20px;
          font-weight: bold;
          font-size: 20px;
+
+	 @include tab {
+           padding: 0;
+           width: 100%;
+	   font-size: 15px;
+         }
      }
  }
  
