@@ -35,9 +35,6 @@
      position: fixed;
      bottom: 30px;
      right: 30px;
-<<<<<<< HEAD
-     z-index: 100;
-=======
 
      &:before {
         z-index: 110;
@@ -50,7 +47,6 @@
         content: "\f057";
         font-size: 15px;
      }
->>>>>>> 70fbdbb65cfe08b058b3b97b874f548f8487d6f7
  }
  
  header {
@@ -1241,23 +1237,6 @@
         width: 996px;
         margin: 0 auto;
          
-<<<<<<< HEAD
-         .folder-item {
-             width: calc(100% / 3 - 15px);
-             
-             @include tab {
-                 width: calc(100% / 2 - 15px);
-             }
-             
-             @include sp {
-                 width: calc(100% - 15px);
-             }
-         }
-     }
- }
- /*# sourceMappingURL=aedi.css.map */
- 
-=======
         @include pc {
             width: 100%;
         }
@@ -1280,5 +1259,3 @@
     }
 }
 /*# sourceMappingURL=aedi.css.map */
- 
->>>>>>> 70fbdbb65cfe08b058b3b97b874f548f8487d6f7
